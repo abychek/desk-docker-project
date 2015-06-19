@@ -26,7 +26,8 @@ RUN apt-get install -y \
     libpspell-dev \
     libreadline-dev \
     libtidy-dev \
-    libxslt-dev
+    libxslt-dev \
+    libpq5 libpq-dev
 
 RUN ln -s /usr/include/x86_64-linux-gnu/gmp.h /usr/include/gmp.h
 
@@ -55,6 +56,7 @@ RUN cd /tmp/php-src && \
                 --enable-pcntl        --enable-fpm \
                 --enable-intl         --enable-zip \
                 --with-imap           --with-mysqli=mysqlnd \
+                --with-pdo-pgsql \
                 --enable-calendar     --prefix=/usr/local \
                 --with-mysql-sock=/var/run/mysqld/mysqld.sock \
                 --with-config-file-scan-dir=/etc/php7/conf.d \
