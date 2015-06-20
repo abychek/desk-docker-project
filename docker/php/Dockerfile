@@ -70,6 +70,14 @@ COPY php-fpm.conf /usr/local/etc/php-fpm.conf
 COPY php-fpm.www.conf /usr/local/etc/php-fpm.d/www.conf
 COPY php.ini /etc/php7/php.ini
 
+RUN apt-get -y install curl
+
+RUN cd /tmp && \
+    curl -sS https://getcomposer.org/installer | php && \
+    mv composer.phar /usr/local/bin/composer
+
+WORKDIR /project
+
 EXPOSE 9000
 
 RUN mkdir /icc

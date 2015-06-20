@@ -1,4 +1,4 @@
-Poligon
+Desk Framework - Docker
 =======
 
 Linked containers for PHP7 and NGINX.
@@ -25,5 +25,5 @@ http://192.168.59.103/
 
 Add below string into your shell config to make the work more comfortable:
 ```
-alias desk-composer="docker-compose run composer composer"
+alias desk-composer="docker-compose run --entrypoint /usr/local/bin/composer php"
 ```
