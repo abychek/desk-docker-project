@@ -3,13 +3,13 @@ Poligon
 
 Linked containers for PHP7 and NGINX.
 
-Install:
+### Install
 
 ```
 docker-compose build
 ```
 
-Run:
+### Run
 
 ```
 docker-compose up
@@ -19,4 +19,11 @@ Site will be available at (or check IP by ```boot2docker ip```):
 
 ```
 http://192.168.59.103/
+```
+
+### Configuring
+
+Add below string into your shell config to make the work more comfortable:
+```
+alias desk-composer="docker-compose run composer composer"
 ```

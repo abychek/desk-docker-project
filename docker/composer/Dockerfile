@@ -66,13 +66,12 @@ RUN cd /tmp/php-src && \
     make && \
     make install
 
-COPY php-fpm.conf /usr/local/etc/php-fpm.conf
-COPY php-fpm.www.conf /usr/local/etc/php-fpm.d/www.conf
 COPY php.ini /etc/php7/php.ini
 
-EXPOSE 9000
+RUN apt-get -y install curl
 
-RUN mkdir /icc
-VOLUME ["/icc"]
+RUN cd /tmp && \
+    curl -sS https://getcomposer.org/installer | php && \
+    mv composer.phar /usr/local/bin/composer
 
-ENTRYPOINT ["/usr/local/sbin/php-fpm", "-F"]
+WORKDIR /project
