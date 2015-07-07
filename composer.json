@@ -1,0 +1,14 @@
+{
+    "name": "maksutov/redis-test-project",
+    "description": "Projecta that use redis for auto incrementing when user come on site page",
+    "require": {
+        "predis/predis": "^1.1@dev"
+    },
+    "authors": [
+        {
+            "name": "Dmitry Maksutov",
+            "email": "maksutov.dmitry@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev"
+}
