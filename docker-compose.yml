@@ -3,8 +3,26 @@ data:
   volumes:
    - .:/project
    - docker-data/sites:/etc/nginx/sites-enabled
+   - docker-data/redis:/data
+   - docker-data/postgres:/var/lib/postgresql/data
+redis:
+  image: redis
+  volumes_from:
+   - data
+  command: ["/usr/local/bin/redis-server", "--appendonly", "yes"]
+postgres:
+  image: postgres
+  environment:
+   - POSTGRES_PASSWORD=some_password
+   - POSTGRES_USER=developer
+   - LC_ALL=C.UTF-8
+  volumes_from:
+   - data
 php:
   image: gidman/desk-docker-php7
+  links:
+   - redis
+   - postgres
   volumes_from:
    - data
 nginx:
