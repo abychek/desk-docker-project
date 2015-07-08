@@ -1,2 +1,5 @@
 /vendor
 /composer.lock
+/docker-data/redis
+/docker-data/postgres
+
