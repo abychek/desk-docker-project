@@ -4,7 +4,7 @@ require_once __DIR__ . '/../vendor/autoload.php';
 
 function app_path($path = '/')
 {
-    $rootDir = '/' . explode('/', __DIR__)[1];
+    $rootDir = realpath(__DIR__ . '/..') . '/';
     return preg_replace('/\/+/', '/', $rootDir . $path);
 }
 
@@ -14,7 +14,7 @@ $app['console'] = function () {
     return new \Symfony\Component\Console\Application();
 };
 
-if (file_exists(app_path('/.env'))) {
+if (file_exists(app_path('.env'))) {
     $dotenv = new \Dotenv\Dotenv(app_path());
     $dotenv->load();
 }

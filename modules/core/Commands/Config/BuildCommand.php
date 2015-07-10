@@ -27,7 +27,7 @@ class BuildCommand extends Command
                 ;
                 $result .= '# ' . preg_replace('/(\/.+\/)*(.+)\.(.*)$/', '$2', $file) . "\n";
                 $result .= file_get_contents($file);
-                $result .= "\n\n";
+                $result .= "\n";
             }
             file_put_contents($envFileName, $result);
             $output->writeln('Done!');
