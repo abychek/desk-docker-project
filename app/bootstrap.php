@@ -2,11 +2,22 @@
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
+function app_path($path = '/')
+{
+    $rootDir = realpath(__DIR__ . '/..') . '/';
+    return preg_replace('/\/+/', '/', $rootDir . $path);
+}
+
 $app = new Silex\Application();
 
 $app['console'] = function () {
     return new \Symfony\Component\Console\Application();
 };
+
+if (file_exists(app_path('.env'))) {
+    $dotenv = new \Dotenv\Dotenv(app_path());
+    $dotenv->load();
+}
 
 $serviceProviderClasses = require_once __DIR__ . '/providers.php';
 
