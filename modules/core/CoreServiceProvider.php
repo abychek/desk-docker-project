@@ -4,7 +4,9 @@ namespace Desk\Core;
 
 
 use Desk\Core\Commands\Config\BuildCommand;
+use Desk\Core\Commands\Config\GetCommand;
 use Desk\Core\Commands\Database\CreateCommand;
+use Desk\Core\Commands\Database\DropCommand;
 use Silex\Application;
 use Silex\ServiceProviderInterface;
 
@@ -31,6 +33,8 @@ class CoreServiceProvider implements ServiceProviderInterface
             $app['console'] = $app->share($app->extend('console', function ($console) use ($app) {
                 $console->add(new BuildCommand());
                 $console->add(new CreateCommand($app));
+                $console->add(new DropCommand($app));
+                $console->add(new GetCommand());
 
                 return $console;
             }));
